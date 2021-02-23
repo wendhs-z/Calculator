@@ -1,12 +1,14 @@
-package com.wndynjtt.calculator;
+package com.wndynjtt.calculator.View;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+
+import com.wndynjtt.calculator.Presenter.MainActivityPresenter;
+import com.wndynjtt.calculator.R;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
@@ -24,6 +26,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        // we initialize the components
         initializeComponents();
 
         mainActivityPresenter = new MainActivityPresenter(tvOutput, btnEquals,
@@ -98,7 +101,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 mainActivityPresenter.updateMethod(btnMultiply.getText().toString());
                 break;
             case R.id.btn_four:
-                Log.d("wendy", "pressed: " + btn4.getText().toString());
                 mainActivityPresenter.setText(btn4.getText().toString());
                 break;
             case R.id.btn_five:
@@ -108,7 +110,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 mainActivityPresenter.setText(btn6.getText().toString());
                 break;
             case R.id.btn_minus:
-                Log.d("wendy", "pressed: " + btn4.getText().toString());
                 mainActivityPresenter.updateMethod(btnMinus.getText().toString());
                 break;
             case R.id.btn_one:
@@ -121,7 +122,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 mainActivityPresenter.setText(btn3.getText().toString());
                 break;
             case R.id.btn_plus:
-                Log.d("wendy", "pressed: " + btn4.getText().toString());
                 mainActivityPresenter.updateMethod(btnPlus.getText().toString());
                 break;
             case R.id.btn_zero:

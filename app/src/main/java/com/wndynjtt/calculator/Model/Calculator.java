@@ -1,6 +1,5 @@
-package com.wndynjtt.calculator;
+package com.wndynjtt.calculator.Model;
 
-import android.util.Log;
 
 import java.text.NumberFormat;
 import java.util.ArrayList;
@@ -16,16 +15,18 @@ public class Calculator {
 
     String number = "0";
 
+    /* this identifies which method should be used */
     public enum Method
     {
         ADDITION, SUBTRACTION, DIVISION, MULTIPLICATION, NULL
     }
 
+    /* initialization of this model */
     public Calculator() {
         equation = new ArrayList<>();
     }
 
-
+    /* sets which method is needed */
     public void setMethod(Method method)
     {
         if(equation.size() >= 3)
@@ -33,12 +34,12 @@ public class Calculator {
             calculate();
         }
         equation.add(method);
-        Log.d("wendy", "equation on setMethod: " + equation.toString());
+
     }
 
+    /* calculates the given numbers */
     public void calculate()
     {
-        Log.d("wendy", "equation" + equation.toString());
         if(equation.size() >=3)
         {
             float n1 = 0, n2 = 0, answer = 0;
@@ -60,33 +61,18 @@ public class Calculator {
                 {
                     case ADDITION:
                         answer = n1 + n2;
-                        Log.d("wendy", "equation n1: " + n1);
-                        Log.d("wendy", "equation n2: " + n2);
-                        Log.d("wendy", "equation add: " + answer);
                         break;
                     case DIVISION:
                         answer = n1 / n2;
-                        Log.d("wendy", "equation n1: " + n1);
-                        Log.d("wendy", "equation n2: " + n2);
-                        Log.d("wendy", "equation divide: " + answer);
                         break;
                     case SUBTRACTION:
                         answer = n1 - n2;
-                        Log.d("wendy", "equation n1: " + n1);
-                        Log.d("wendy", "equation n2: " + n2);
-                        Log.d("wendy", "equation subtract: " + answer);
                         break;
                     case MULTIPLICATION:
                         answer = n1 * n2;
-                        Log.d("wendy", "equation n1: " + n1);
-                        Log.d("wendy", "equation n2: " + n2);
-                        Log.d("wendy", "equation multiply: " + answer);
                         break;
                     case NULL:
                         answer = 0;
-                        Log.d("wendy", "equation n1: " + n1);
-                        Log.d("wendy", "equation n2: " + n2);
-                        Log.d("wendy", "equation null: " + answer);
                     default:
                         break;
                 }
@@ -96,31 +82,31 @@ public class Calculator {
             equation.clear();
             equation.add(String.valueOf(answer));
 
-            Log.d("wendy", "equation end: " + equation.toString());
-
-
         }
     }
 
+    /* controls the equation's continuability */
     public void enteredNumberIsComplete()
     {
         if(equation.size() == 1) return;
 
         equation.add(number);
         number = "0";
-        Log.d("wendy", "equation complete: " + equation.toString());
     }
 
+    /* updates the values of the numbers */
     public void updateEquation(String n)
     {
         number += n;
     }
 
+    /* returns the output as string */
     public String getOutput()
     {
         return NumberFormat.getInstance().format(output);
     }
 
+    /* resets the equation */
     public void resetEquation()
     {
         equation.clear();

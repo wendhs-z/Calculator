@@ -1,8 +1,9 @@
-package com.wndynjtt.calculator;
+package com.wndynjtt.calculator.Presenter;
 
-import android.util.Log;
 import android.widget.Button;
 import android.widget.TextView;
+
+import com.wndynjtt.calculator.Model.Calculator;
 
 public class MainActivityPresenter {
 
@@ -43,22 +44,18 @@ public class MainActivityPresenter {
         switch(method)
         {
             case "+":
-                Log.d("wendy", "method: add");
                 calculator.setMethod(Calculator.Method.ADDITION);
                 btnPlus.setSelected(true);
                 break;
             case "-":
-                Log.d("wendy", "method: minus");
                 calculator.setMethod(Calculator.Method.SUBTRACTION);
                 btnMinus.setSelected(true);
                 break; 
             case "x":
-                Log.d("wendy", "method: multiply");
                 calculator.setMethod(Calculator.Method.MULTIPLICATION);
                 btnMultiply.setSelected(true);
                 break;
             case "÷":
-                Log.d("wendy", "method: divide");
                 calculator.setMethod(Calculator.Method.DIVISION);
                 btnDivide.setSelected(true);
                 break;
